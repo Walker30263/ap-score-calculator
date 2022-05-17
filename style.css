@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+      
+* {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Poppins";
+}
+
+body {
+  background-color: #1e0033;
+}
+
+h1 {
+  font-size: 1.3em;
+}
+
+#searchForCourse {
+  color: black;
+}
+
+#divCoursesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #38025e;
+  padding: 20px;
+}
+
+.course {
+  background-color: #38ffbd;
+  color: #000000;
+  padding: 10px;
+  font-size: 1em;
+  margin: 6px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.course:hover {
+  border-width: 2px;
+}
+
+.selectedCourse {
+  background-color: #1e0033;
+  color: #ffffff;
+}
