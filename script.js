@@ -64,7 +64,7 @@ function showCalculator() {
   Object.keys(data[selectedCourseId]["sections"]["frq"]["questions"]).forEach(key => {
     let input = document.createElement("input");
     input.id = key;
-    input.classList.add("scoreInput");
+    input.classList.add("scoreInput", "frqScoreInput");
     input.type = "range";
     input.min = 0;
     input.max = data[selectedCourseId]["sections"]["frq"]["questions"][key]["points"];
@@ -83,13 +83,13 @@ function showCalculator() {
   syncLabels("scoreInput");
 }
 
-//function to "clear" everything by making the innerHTML of the containers blank
+//helper function to "clear" everything by making the innerHTML of the containers blank
 function resetCalculator() {
   divInputsContainer.innerHTML = "";
   divResults.innerHTML = "";
 }
 
-//helper function to make sure that the inputs' labels update when the value of the inputs are changed
+//function to add event listeners to make sure that the inputs' labels and the calculated scores update when the value of the inputs are changed
 function syncLabels(className) {
   Array.from(document.getElementsByClassName(className)).forEach(input => {
     input.addEventListener("change", function() {
@@ -99,6 +99,70 @@ function syncLabels(className) {
       } else {
         correspondingLabel.textContent = `${data[selectedCourseId]["sections"]["frq"]["questions"][input.id]["full"]}: ${input.value}/${data[selectedCourseId]["sections"]["frq"]["questions"][input.id]["points"]}`;
       }
+
+      score();
     }); 
   });
+}
+
+//helper function to get score given composite score and course id 
+function getScore(compositeScore, course) {
+  let scores = data[course]["scores"];
+
+  if (compositeScore >= scores.five) {
+    return 5;
+  } else if (compositeScore >= scores.four) {
+    return 4;
+  } else if (compositeScore >= scores.three) {
+    return 3;
+  } else if (compositeScore >= scores.two) {
+    return 2;
+  } else {
+    return 1;
+  }
+}
+
+//function to calculate and display scores in the divResults container
+function score() {
+  let maxTotalComposite = data[selectedCourseId].maxTotalComposite; //get max total composite score
+      
+  let mcqWeight = data[selectedCourseId].sections.mcq.weight;
+  let mcqQuestions = data[selectedCourseId]["sections"]["mcq"]["questions"]; //get number of questions on the mcq section
+  let maxMCQscore = maxTotalComposite*mcqWeight; //max MCQ section score will be whatever % the MCQ section is worth of the total composite score possible
+  //basically solving a proportion: (MCQ right)/(MCQ total) = (x points)/(total points), solving for x
+  let mcqScore = Math.round((parseInt(document.getElementById("mcqInput").value)/mcqQuestions)*maxMCQscore);
+
+  
+  let frqWeight = data[selectedCourseId].sections.frq.weight;
+  let totalFRQPoints = 0;
+  //use a for-loop to add the amount of points each FRQ is to the variable totalFRQPoints
+  Object.keys(data[selectedCourseId].sections.frq.questions).forEach(key => {
+    totalFRQPoints += data[selectedCourseId].sections.frq.questions[key].points;
+  });
+  
+  let maxFRQscore = maxTotalComposite*frqWeight; //max FRQ section score will be whatever % the FRQ section is worth of the total composite score possible 
+  
+  let frqPointsEarned = 0;
+  //use a for-loop to add the value of each frq score slider input to the frqPointsEarned variable
+  Array.from(document.getElementsByClassName("frqScoreInput")).forEach(slider => {
+    frqPointsEarned += parseInt(slider.value);
+  });
+
+  //basically solving a proportion: (FRQ points earned)/(Total FRQ points possible) = (x composite score points)/(maximum possible composite score points from FRQ), solving for x
+  let frqScore = Math.round((frqPointsEarned/totalFRQPoints)*maxFRQscore);
+  
+  let compositeScore = mcqScore + frqScore;
+  divResults.innerHTML = 
+  `
+    <h1>Your scores:</h1>
+    MCQ Score: ${mcqScore}
+    <br>
+    FRQ Score: ${frqScore}
+    <br>
+    Composite Score: ${compositeScore}/100
+    <br>
+    <br>
+    <br>
+    Your score... a<br><span style='font-size:2em;font-weight:bold;'>${getScore(compositeScore, selectedCourseId)}<span>
+  `
 }

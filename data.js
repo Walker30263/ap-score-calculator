@@ -41,13 +41,119 @@ let data = {
     }
   },
 
+  physics2: {
+    fullName: "AP Physics 2: Algebra Based",
+    maxTotalComposite: 100,
+    sections: {
+      mcq: {
+        questions: 50,
+        weight: 0.5
+      },
+      frq: {
+        questions: {
+          expDesign: {
+            full: "Experimental Design FRQ",
+            points: 12
+          },
+          qqAnalysis: {
+            full: "Qualitative/Quantitative Analysis FRQ",
+            points: 12
+          },
+          paraArgument: {
+            full: "Paragraph Argument FRQ",
+            points: 10
+          },
+          sa1: {
+            full: "Short Answer FRQ",
+            points: 10
+          }
+        },
+        weight: 0.5
+      }
+    },
+    scores: {
+      five: 72,
+      four: 60,
+      three: 41,
+      two: 22
+    }
+  },
+
+  physicsCMech: {
+    fullName: "AP Physics C: Mechanics",
+    maxTotalComposite: 90,
+    sections: {
+      mcq: {
+        questions: 35,
+        weight: 0.5
+      },
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 15
+          },
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 15
+          },
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 15
+          }
+        },
+        weight: 0.5
+      }
+    },
+    scores: {
+      five: 53,
+      four: 39,
+      three: 32,
+      two: 20
+    }
+  },
+
+  physicsEM: {
+    fullName: "AP Physics C: Electricity and Magnetism",
+    maxTotalComposite: 90,
+    sections: {
+      mcq: {
+        questions: 35,
+        weight: 0.5
+      },
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 15
+          },
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 15
+          },
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 15
+          }
+        },
+        weight: 0.5
+      }
+    },
+    scores: {
+      five: 53,
+      four: 39,
+      three: 32,
+      two: 20
+    }
+  },
+
   chem: {
     fullName: "AP Chemistry",
     maxTotalComposite: 100,
     sections: {
       mcq: {
         questions: 60,
-        maxScore: 50
+        weight: 0.5
       },
       frq: {
         questions: {
@@ -87,45 +193,133 @@ let data = {
       five: 72,
       four: 58,
       three: 42,
-      two: 9,
+      two: 9
     }
   },
 
-  gov: {
-    fullName: "AP US Government and Politics",
-    maxTotalComposite: 120,
+  psych: {
+    fullName: "AP Psychology",
+    maxTotalComposite: 150,
     sections: {
       mcq: {
-        questions: 55,
-        weight: 0.5
+        questions: 100,
+        weight: 0.66666666666
       },
       frq: {
         questions: {
-          concApp: {
-            full: "Concept Application FRQ",
-            points: 3
-          },
-          quanAn: {
-            full: "Quantitative Analysis FRQ",
-            points: 4
-          },
-          scotusComp: {
-            full: "SCOTUS Comparison FRQ",
-            points: 4
-          },
-          argEssay: {
-            full: "Argumentative Essay",
-            points: 6
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 7
+          }, 
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 7
           }
-        }, 
+        },
+        weight: 0.33333333333
+      }
+    },
+    scores: {
+      five: 113,
+      four: 93,
+      three: 78,
+      two: 65,
+    }
+  },
+
+  calcAB: {
+    fullName: "AP Calculus AB",
+    maxTotalComposite: 108,
+    sections: {
+      mcq: {
+        questions: 45,
+        weight: 0.5
+      }, 
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 9
+          }, 
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 9
+          }, 
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 9
+          }, 
+          frq4: {
+            full: "Free Response - Question 4",
+            points: 9
+          }, 
+          frq5: {
+            full: "Free Response - Question 5",
+            points: 9
+          }, 
+          frq6: {
+            full: "Free Response - Question 6",
+            points: 9
+          }, 
+        },
         weight: 0.5
       }
     },
     scores: {
-      five: 96,
-      four: 82,
-      three: 67,
-      two: 42,
+      five: 69,
+      four: 57,
+      three: 45,
+      two: 37
+    }
+  },
+
+  calcBC: {
+    fullName: "AP Calculus BC",
+    maxTotalComposite: 108,
+    sections: {
+      mcq: {
+        questions: 45,
+        weight: 0.5
+      }, 
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 9
+          }, 
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 9
+          }, 
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 9
+          }, 
+          frq4: {
+            full: "Free Response - Question 4",
+            points: 9
+          }, 
+          frq5ABPart: {
+            full: "Free Response - Question 5 (AB Part)",
+            points: 5
+          }, 
+          frq5BCPart: {
+            full: "Free Response - Question 5 (BC Part)",
+            points: 4
+          }, 
+          frq6: {
+            full: "Free Response - Question 6",
+            points: 9
+          }, 
+        },
+        weight: 0.5
+      }
+    },
+    scores: {
+      five: 62,
+      four: 52,
+      three: 41,
+      two: 35
     }
   }
 }
