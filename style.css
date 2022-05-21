@@ -14,15 +14,13 @@ h1 {
   font-size: 1.3em;
 }
 
-#searchForCourse {
-  color: black;
-}
-
 #divCoursesContainer {
   display: flex;
   flex-wrap: wrap;
   background-color: #38025e;
   padding: 20px;
+  border: solid;
+  border-radius: 10px;
 }
 
 .course {
@@ -37,9 +35,23 @@ h1 {
 
 .course:hover {
   border-width: 2px;
+  filter: brightness(120%);
 }
 
 .selectedCourse {
   background-color: #1e0033;
   color: #ffffff;
+}
+
+button {
+  background-color: #38ffbd;
+  color: #000000;
+  padding: 10px;
+  font-size: 0.8em;
+  border-radius: 30px;
+  border: 1px solid;
+}
+
+button:hover {
+  filter: brightness(85%);
 }

@@ -2,8 +2,6 @@
 just wanna start off by saying i'm sorry to anyone reading this spaghetti code
 */
 
-let selectedCourseId = "";
-
 window.onload = function() {
   //create divs with names of courses and put them in the container of ap exams to choose from
   Object.keys(data).forEach(key => {
@@ -34,8 +32,14 @@ window.onload = function() {
     
     document.getElementById("divCoursesContainer").append(course);
   });
+
+  let urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("course")) { //check if the course is included as an URL parameter, like https://apscores.tk/?course=csA
+    document.getElementById(urlParams.get("course")).click();
+  }
 }
 
+let selectedCourseId = "";
 let divInputsContainer = document.getElementById("divInputsContainer");
 let divResults = document.getElementById("divResults");
 
@@ -159,10 +163,24 @@ function score() {
     <br>
     FRQ Score: ${frqScore}
     <br>
-    Composite Score: ${compositeScore}/100
+    Composite Score: ${compositeScore}/${maxTotalComposite}
     <br>
     <br>
     <br>
     Your score... a<br><span style='font-size:2em;font-weight:bold;'>${getScore(compositeScore, selectedCourseId)}<span>
+    <br>
+    <br>
+    <button onclick="share()")>Share 🔗</button>
+    <br>
+    <span style="font-size:0.4em;">All of the code is publicly available on GitHub and the developer would appreciate it if you would star their <a href="https://github.com/Walker30263/ap-score-calculator">GitHub repository</a></span>
   `
+}
+
+//copy link to clipboard to share
+function share() {
+  navigator.clipboard.writeText(`https://apscores.tk/?course=${selectedCourseId}`);
+  Swal.fire({
+    title: "Copied link to clipboard!",
+    icon: "success"
+  });
 }

@@ -197,6 +197,40 @@ let data = {
     }
   },
 
+  envSci: {
+    fullName: "AP Environmental Science",
+    maxTotalComposite: 150,
+    sections: {
+      mcq: {
+        questions: 80,
+        weight: 0.6
+      },
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 10
+          }, 
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 10
+          }, 
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 10
+          }
+        },
+        weight: 0.4
+      }
+    },
+    scores: {
+      five: 107,
+      four: 87,
+      three: 75,
+      two: 62
+    }
+  },
+
   psych: {
     fullName: "AP Psychology",
     maxTotalComposite: 150,
@@ -320,6 +354,70 @@ let data = {
       four: 52,
       three: 41,
       two: 35
+    }
+  },
+
+  csPrinciples: {
+    fullName: "AP Computer Science Principles",
+    maxTotalComposite: 100,
+    sections: {
+      mcq: {
+        questions: 70,
+        weight: 0.7
+      },
+      frq: {
+        questions: {
+          perfTask: {
+            full: "Create Performance Task",
+            points: 6
+          }
+        },
+        weight: 0.3
+      }
+    },
+    scores: {
+      five: 90,
+      four: 81,
+      three: 62,
+      two: 45
+    }
+  },
+
+  csA: {
+    fullName: "AP Computer Science A",
+    maxTotalComposite: 80,
+    sections: {
+      mcq: {
+        questions: 40,
+        weight: 0.5
+      },
+      frq: {
+        questions: {
+          frq1: {
+            full: "Free Response - Question 1",
+            points: 9
+          }, 
+          frq2: {
+            full: "Free Response - Question 2",
+            points: 9
+          }, 
+          frq3: {
+            full: "Free Response - Question 3",
+            points: 9
+          }, 
+          frq4: {
+            full: "Free Response - Question 4",
+            points: 9
+          }
+        },
+        weight: 0.5
+      }
+    },
+    scores: {
+      five: 62,
+      four: 47,
+      three: 37,
+      two: 29
     }
   }
 }
